@@ -21,4 +21,12 @@ const createTodo = async (req, res) =>{
   }
 }
 
-module.exports = { getTodo, createTodo };
+const getAllTodos = async (req, res) =>{
+  const Todos = await Todo.find();
+    return res.send({
+      success: true,
+      message: "Todos retrieved successfully",
+      Todos
+    })
+}
+module.exports = { getTodo, createTodo, getAllTodos };
