@@ -22,7 +22,7 @@ const createTodo = async (req, res) =>{
 }
 
 const getAllTodos = async (req, res) =>{
-  const Todos = await Todo.find();
+  const Todos = await Todo.find().sort({stars:-1});
   try{
     return res.send({
       success: true,
