@@ -6,12 +6,19 @@ const getTodo = (req, res) =>{
 
 const createTodo = async (req, res) =>{
   const newTodo = new Todo(req.body);
-  await newTodo.save();
-  return res.send({
-    success: true,
-    message: "Todo created successfully",
-    newTodo
-  });
+  try{
+    await newTodo.save();
+    return res.send({
+      success: true,
+      message: "Todo created successfully",
+      newTodo
+    });
+  } catch(e){
+    return res.send({
+      success: false,
+      message: e.message || "Todo not created",
+    });
+  }
 }
 
 module.exports = { getTodo, createTodo };
