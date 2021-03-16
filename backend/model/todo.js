@@ -16,3 +16,6 @@ const todoSchema = new Schema({
         max:5
     } 
 })
+
+const Todo = mongoose.model('Todo', todoSchema);
+module.exports = Todo;
