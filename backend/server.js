@@ -1,12 +1,15 @@
 
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 6000;
+const bodyParser = require('body-parser')
+const todoRouter = require('./todo');
+const PORT = process.env.PORT || 5000;
 const db = require('./database');
 
-app.get('/', (req, res) =>{
-   return res.send('Hello world, Welcome to MERN web App');
-});
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json())
+
+app.use('/', todoRouter);
 
 db().then(console.log('Database started successfully'))
     .catch(err => console.log(err));
