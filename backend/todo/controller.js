@@ -1,9 +1,5 @@
 const Todo = require('../model/todo');
 
-const getTodo = (req, res) =>{
-  return res.send("Todo successfully retrieved");
-}
-
 const createTodo = async (req, res) =>{
   const newTodo = new Todo(req.body);
   try{
